@@ -11,7 +11,7 @@ export const App = () => {
 
       <Routes>
         <Route path='/' element={<HomeMui />} />
-        <Route path='/movies' />
+        <Route path='/movies' element={<div><h1>MOVIES PAGE</h1></div>}/>
       </Routes>
     </ContainerMui>
   );
