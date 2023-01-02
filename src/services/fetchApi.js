@@ -1,22 +1,23 @@
 import axios from 'axios';
 
-export const getImages = async (query, page, perPage) => {
-  // console.log(query, page);
-  try {
-    const response = await axios.get('https://pixabay.com/api/', {
-      params: {
-        key: '30695501-7cf0afb8f69a77a083ed747e6',
-        q: query,
-        image_type: 'photo',
-        orientation: 'horizontal',
-        safesearch: true,
-        page: page,
-        per_page: perPage,
-      }
-    });
-    return response.data;
-  } catch (err) {
-    console.log(err);
-    return err;
+const API_KEY = 'fe13ab826a741d40ca015441d0a0f529';
+const BACKEND = 'https://api.themoviedb.org/3/';
+
+
+export const Api = {
+  async findPopular() {
+    try {
+      const response = await axios.get(`${BACKEND}trending/movie/day?api_key=${API_KEY}`);
+      console.log(response);
+      const answer = await response.data.results;
+
+      return answer;
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
   }
 };
+
+
+
