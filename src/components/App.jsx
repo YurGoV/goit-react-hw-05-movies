@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import {ContainerMui} from "./Container/Container";
 import {MuiAppBar} from "./Header/Header";
 import {HomeMui} from "../pages/Home";
+import {Movies} from "../pages/Movies";
 
 
 export const App = () => {
@@ -11,7 +12,7 @@ export const App = () => {
 
       <Routes>
         <Route path='/' element={<HomeMui />} />
-        <Route path='/movies' element={<div><h1>MOVIES PAGE</h1></div>}/>
+        <Route path='/movies' element={<Movies />}/>
       </Routes>
     </ContainerMui>
   );
