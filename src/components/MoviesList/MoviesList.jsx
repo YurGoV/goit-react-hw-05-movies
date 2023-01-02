@@ -1,7 +1,7 @@
-import ListItem from "@mui/material/ListItem";
-import {Link} from "react-router-dom";
+// import ListItem from "@mui/material/ListItem";
+// import {Link} from "react-router-dom";
 // import List from "@mui/material/List";
-import {Avatar, ListItemAvatar} from "@mui/material";
+import {Avatar} from "@mui/material";
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
