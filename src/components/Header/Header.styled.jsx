@@ -13,8 +13,8 @@ export const StyledNavLink = styled(NavLink)`
   border-radius: 4px;
 
   &.active {
-    color: darkblue;
-  border: 1px solid darkblue;
+    color: white;
+  border: 2px solid white;
   }
 
   :hover:not(.active),
