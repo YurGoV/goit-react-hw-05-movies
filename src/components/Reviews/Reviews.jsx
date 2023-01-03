@@ -14,7 +14,7 @@ export const Reviews = () => {
 
   useEffect(() => {
     Api.getMovieReviews(movieId).then(setMovieReviews)
-  }, [])
+  }, [movieId])
 
   if (!movieReviews) {
     return null

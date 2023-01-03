@@ -31,7 +31,7 @@ export const Cast = () => {
 
   useEffect(() => {
     Api.getMovieCast(movieId).then(setMovieCast)
-  }, [])
+  }, [movieId])
 
   if (!movieCast) {
     return null
