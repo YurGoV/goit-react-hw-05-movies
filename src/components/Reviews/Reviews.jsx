@@ -20,6 +20,14 @@ export const Reviews = () => {
     return null
   }
 
+  if (movieReviews.length === 0) {
+    return (
+      <Typography>
+        THERE ARE NO REVIEWS ON THIS FILM
+      </Typography>
+    )
+  }
+
   return (
     <Box>
       {movieReviews.map(({id, author, content}) => (

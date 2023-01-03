@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import {Link, Outlet, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Api} from "../services/fetchApi";
+import {LinkStyled} from "./MovieDetail.styled";
 
 
 export const MovieDetails = () => {
@@ -64,16 +65,16 @@ export const MovieDetails = () => {
       </Box>
       <Box sx={{
         display: 'flex',
-        maxWidth: 200,
-        justifyContent: 'space-between',
+        maxWidth: 340,
+        justifyContent: 'space-around',
         padding: '5px',
       }}>
-        <Link to="cast">
+        <LinkStyled to="cast">
           CAST
-        </Link>
-        <Link to="reviews">
+        </LinkStyled>
+        <LinkStyled to="reviews">
           REVIEWS
-        </Link>
+        </LinkStyled>
       </Box>
       <Outlet/>
     </Box>

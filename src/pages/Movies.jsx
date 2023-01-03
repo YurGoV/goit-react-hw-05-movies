@@ -2,14 +2,30 @@ import Box from "@mui/material/Box";
 import {useForm} from "react-hook-form";
 import TextField from '@mui/material/TextField';
 import {Button} from "@mui/material";
+import {useState} from "react";
+import {Api} from "../services/fetchApi";
+// import Grid from "@mui/material/Unstable_Grid2";
+// import {MovieBox, MovieLink} from "../components/MoviesList/MoviesList.styled";
+// import {Link} from "react-router-dom";
+import {SearchedMovieLink} from "./movies.styled";
 // import Input from '@mui/material/Input';
 
 
 export const Movies = () => {
 
+  const [movies, setMovies] = useState([]);
+
+
+  // useEffect(() => {
+  //   console.log(movies);
+  // },[movies])
+
   const {register, handleSubmit} = useForm();//todo: validation
   // const {handleSubmit} = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = ({query}) => {
+    console.log(query);
+    Api.findOnQuery(query).then(setMovies);
+  };
 
 
   return (
@@ -41,18 +57,38 @@ export const Movies = () => {
                   height: '25px',
                   width: '50px',
                   marginLeft: '20px',
-                }} >Search</Button>
+                }}>Search</Button>
       </Box>
       <Box sx={{
         display: 'flex',
         flexDirection: 'row',
-        border: '1px solid lightgrey',
+        // border: '1px solid lightgrey',
         minWidth: '800px',
         marginTop: '15px',
       }}>
-        FILMS
+        {Array.isArray(movies) && movies.length > 0 &&
+          <Box>
+            {movies.map(({id, original_title, backdrop_path}) => (
+              <Box key={id}>
 
+                  <SearchedMovieLink to={`/movies/${id}`}>
+                    {original_title}
+                  </SearchedMovieLink>
+
+              </Box>
+            ))}
+          </Box>
+        }
       </Box>
     </Box>
   )
 }
+
+
+
+
+
+
+
+
+

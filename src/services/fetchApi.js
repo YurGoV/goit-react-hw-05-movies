@@ -60,6 +60,20 @@ export const Api = {
     }
   },
 
+  async findOnQuery(query, page = 1) {
+    try {
+      console.log(query);
+      const response = await axios.get(`${BACKEND}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`);
+      console.log(response);
+      const answer = await response.data.results;
+
+      return answer;
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
+  },
+
 };
 
 
