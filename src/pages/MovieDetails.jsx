@@ -13,7 +13,7 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     Api.getMovieDetails(movieId).then(setMovieDetails)
-  }, [])
+  }, [movieId])
 
   if (!movieDetails) {
     return
