@@ -1,13 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-// import List from '@mui/material/List';
-// import ListItemAvatar from '@mui/material/ListItemAvatar';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItem from '@mui/material/ListItem';
-// import Avatar from '@mui/material/Avatar';
-// import ListItemText from '@mui/material/ListItemText';
-// import {Link} from "react-router-dom";
 import {Api} from "../services/fetchApi";
 // import {Movies} from "./Movies";
 import {MoviesList} from "../components/MoviesList/MoviesList";

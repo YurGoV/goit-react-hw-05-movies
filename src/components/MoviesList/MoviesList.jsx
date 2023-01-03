@@ -1,6 +1,4 @@
-// import ListItem from "@mui/material/ListItem";
-// import {Link} from "react-router-dom";
-// import List from "@mui/material/List";
+
 import {Avatar} from "@mui/material";
 
 import Box from '@mui/material/Box';
@@ -10,7 +8,6 @@ import {experimentalStyled as styled} from '@mui/material/styles';
 import {MovieBox, MovieLink} from "./MoviesList.styled";
 
 
-// id, backdrop_path, original_title
 
 const Item = styled(Paper)(({theme}) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -43,7 +40,7 @@ export const MoviesList = ({movies}) => {
                 />
 
               <MovieBox>
-                <MovieLink to={`${id}`}>
+                <MovieLink to={`/movies/${id}`}>
                   {original_title}
                 </MovieLink>
               </MovieBox>
