@@ -2,19 +2,22 @@ import Box from "@mui/material/Box";
 import {useForm} from "react-hook-form";
 import TextField from '@mui/material/TextField';
 import {Button} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Api} from "../services/fetchApi";
 // import Grid from "@mui/material/Unstable_Grid2";
 // import {MovieBox, MovieLink} from "../components/MoviesList/MoviesList.styled";
 // import {Link} from "react-router-dom";
 import {SearchedMovieLink} from "./movies.styled";
 // import Input from '@mui/material/Input';
+import { useSearchParams } from "react-router-dom";
+
 
 
 export const Movies = () => {
 
   const [movies, setMovies] = useState([]);
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query  = searchParams.get('query') ?? '';
 
   // useEffect(() => {
   //   console.log(movies);
@@ -22,12 +25,22 @@ export const Movies = () => {
 
   const {register, handleSubmit} = useForm();//todo: validation
   // const {handleSubmit} = useForm();
+  useEffect(() => {
+    if (query) {
+      Api.findOnQuery(query).then(setMovies);
+
+    }
+  }, [query])
+
+
   const onSubmit = ({query}) => {
+    const queryUpdate = query !== '' ? {query} : {};
     console.log(query);
+    setSearchParams(queryUpdate)
     Api.findOnQuery(query).then(setMovies);
   };
 
-
+// todo: DONE 74та строка - перевірити можливість посилання без повного шляху (без /movies)
   return (
     <Box component='main'
          sx={{
