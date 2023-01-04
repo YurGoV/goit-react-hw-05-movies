@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Api} from "../../services/fetchApi";
 
-export const Reviews = () => {
+const Reviews = () => {
   const{ movieId } = useParams();
 
   console.log(useParams());
@@ -40,3 +40,5 @@ export const Reviews = () => {
     </Box>
   );
 }
+
+export default Reviews;

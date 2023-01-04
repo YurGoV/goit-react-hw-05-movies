@@ -11,11 +11,12 @@ import {SearchedMovieLink} from "./movies.styled";
 // import Input from '@mui/material/Input';
 import { useSearchParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import {Suspense} from "react";
 
 
 
 
-export const Movies = () => {
+const Movies = () => {
 
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,6 +49,8 @@ export const Movies = () => {
 
 // todo: DONE 74та строка - перевірити можливість посилання без повного шляху (без /movies)
   return (
+    <Suspense fallback={<div>Loading...</div>}>
+
     <Box component='main'
          sx={{
            display: 'flex',
@@ -100,9 +103,11 @@ export const Movies = () => {
         }
       </Box>
     </Box>
+  </Suspense>
   )
 }
 
+export default Movies;
 
 
 
