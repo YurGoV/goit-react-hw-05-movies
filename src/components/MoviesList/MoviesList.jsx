@@ -7,6 +7,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import {experimentalStyled as styled} from '@mui/material/styles';
 import {MovieBox, MovieLink} from "./MoviesList.styled";
 import {useLocation} from "react-router-dom";
+import genericFilmPic from '../../img/film.jpg'
 
 
 
@@ -38,7 +39,7 @@ export const MoviesList = ({movies}) => {
 
               <Avatar sx={{ width: 88, height: 50 }}
                 alt="film picture"
-                src={`https://image.tmdb.org/t/p/w154/${backdrop_path}`}
+                src={backdrop_path ? `https://image.tmdb.org/t/p/w154/${backdrop_path}` : genericFilmPic}
                 variant="rounded"
                 />
 

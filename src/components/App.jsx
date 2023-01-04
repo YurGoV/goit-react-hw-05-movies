@@ -6,6 +6,8 @@ import {MuiAppBar} from "./Header/Header";
 // import {Cast} from "./Cast/Cast";
 import {lazy, Suspense} from "react";
 // import {useState} from "react";
+// import {ToastContainer, Zoom} from "react-toastify";
+
 
 const Movies = lazy(() => import('../pages/Movies'));
 const HomeMui = lazy(() => import('../pages/Home'));
@@ -35,6 +37,8 @@ export const App = () => {
         </Route>
       </Routes>
       </Suspense>
+
+
     </ContainerMui>
   );
 };

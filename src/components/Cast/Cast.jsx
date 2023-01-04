@@ -10,6 +10,9 @@ import Paper from '@mui/material/Paper';
 import {experimentalStyled as styled} from '@mui/material/styles';
 import {CastBox} from "./Cast.styled";
 
+import genericAvatar from '../../img/fakeAvatar.png'
+
+
 const Item = styled(Paper)(({theme}) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -36,6 +39,13 @@ const Cast = () => {
   if (!movieCast) {
     return null
   }
+  if (movieCast.length === 0) {
+    return (
+      <Typography>
+        THERE ARE NO CAST INFO FOR THIS FILM
+      </Typography>
+    )
+  }
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -55,9 +65,10 @@ const Cast = () => {
 
               <Avatar sx={{ width: 154, height: 231 }}
                       alt="actor picture"
-                      src={`https://image.tmdb.org/t/p/w154/${profile_path}`}
+                      src={profile_path ? `https://image.tmdb.org/t/p/w154${profile_path}` : genericAvatar}
                       variant="rounded"
-              />
+              >
+              </Avatar>
 
               <CastBox
               sx={{
