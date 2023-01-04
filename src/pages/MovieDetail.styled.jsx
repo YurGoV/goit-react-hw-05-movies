@@ -6,10 +6,10 @@ export const LinkStyled = styled(NavLink)`
   color: black;
   padding: 2px;
   //margin-left: 20px;
-  width: 80px;
+  width: 120px;
   text-decoration: none;
-  border: 2px solid white;
-  border-radius: 4px;
+  //border: 2px solid white;
+  //border-radius: 4px;
   margin: 5px;
   justify-content: center;
 

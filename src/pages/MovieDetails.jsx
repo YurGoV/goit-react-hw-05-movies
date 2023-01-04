@@ -1,14 +1,21 @@
 import Typography from "@mui/material/Typography";
 import Box from '@mui/material/Box';
-import {Link, Outlet, useParams} from "react-router-dom";
+import {Outlet, useLocation, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Api} from "../services/fetchApi";
 import {LinkStyled} from "./MovieDetail.styled";
+import {Button} from "@mui/material";
 
 
 export const MovieDetails = () => {
   const {movieId} = useParams();
   console.log(useParams());
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
+
+  console.log(location.state);
+
+
 
   const [movieDetails, setMovieDetails] = useState(0)
 
@@ -20,6 +27,8 @@ export const MovieDetails = () => {
     return
   }
 
+
+
   return (
     <Box component='main'
          sx={{
@@ -29,7 +38,9 @@ export const MovieDetails = () => {
          }}
     >
 
-      <Link to={'/movies'}>go back</Link>
+      <LinkStyled to={backLinkHref}>
+        <Button variant='outlined'>Go Back</Button>
+      </LinkStyled>
       <Box sx={{
         display: 'flex',
         flexDirection: 'row',
@@ -70,10 +81,10 @@ export const MovieDetails = () => {
         padding: '5px',
       }}>
         <LinkStyled to="cast">
-          CAST
+          <Button variant='outlined'>CAST</Button>
         </LinkStyled>
         <LinkStyled to="reviews">
-          REVIEWS
+          <Button variant='outlined'>REVIEWS</Button>
         </LinkStyled>
       </Box>
       <Outlet/>
