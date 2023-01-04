@@ -23,7 +23,7 @@ const Reviews = () => {
   if (movieReviews.length === 0) {
     return (
       <Typography>
-        THERE ARE NO REVIEWS ON THIS FILM
+        THERE ARE NO REVIEWS FOR THIS FILM
       </Typography>
     )
   }
