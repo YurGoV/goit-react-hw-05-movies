@@ -16,6 +16,9 @@ const MovieDetails = () => {
   console.log(useParams());
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
+  // const backLinkHrefSecond = backLinkHref !== "/" ? {from: location.state.from} : "/";
+  // console.log(backLinkHrefSecond);
+
   console.log(backLinkHref);
 
   console.log(location.state);
@@ -89,10 +92,10 @@ if (!movieDetails) {
         justifyContent: 'space-around',
         padding: '5px',
       }}>
-        <LinkStyled to="cast" state={{ from: location.state.from }}>
+        <LinkStyled to="cast" state={{ from: location.state?.from ?? "/"}}>
           <Button variant='outlined'>CAST</Button>
         </LinkStyled>
-        <LinkStyled to="reviews" state={{ from: location.state.from }}>
+        <LinkStyled to="reviews" state={{ from: location.state?.from ?? "/"}}>
           <Button variant='outlined'>REVIEWS</Button>
         </LinkStyled>
       </Box>
