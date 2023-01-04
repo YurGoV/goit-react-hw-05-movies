@@ -10,6 +10,8 @@ import {Api} from "../services/fetchApi";
 import {SearchedMovieLink} from "./movies.styled";
 // import Input from '@mui/material/Input';
 import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 
 
@@ -18,19 +20,23 @@ export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query  = searchParams.get('query') ?? '';
+  const location = useLocation();
+
 
   // useEffect(() => {
   //   console.log(movies);
   // },[movies])
 
-  const {register, handleSubmit} = useForm();//todo: validation
+  const {register, resetField, handleSubmit} = useForm();//todo: validation
   // const {handleSubmit} = useForm();
   useEffect(() => {
     if (query) {
       Api.findOnQuery(query).then(setMovies);
-
+    } else {
+      setMovies([]);
+      resetField("query");
     }
-  }, [query])
+  }, [query, resetField])
 
 
   const onSubmit = ({query}) => {
@@ -84,7 +90,7 @@ export const Movies = () => {
             {movies.map(({id, original_title, backdrop_path}) => (
               <Box key={id}>
 
-                  <SearchedMovieLink to={`/movies/${id}`}>
+                  <SearchedMovieLink to={`/movies/${id}`} state={{ from: location }}>
                     {original_title}
                   </SearchedMovieLink>
 

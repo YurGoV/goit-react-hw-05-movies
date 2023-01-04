@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import {experimentalStyled as styled} from '@mui/material/styles';
 import {MovieBox, MovieLink} from "./MoviesList.styled";
+import {useLocation} from "react-router-dom";
 
 
 
@@ -21,6 +22,8 @@ const Item = styled(Paper)(({theme}) => ({
 }));
 
 export const MoviesList = ({movies}) => {
+  const location = useLocation();
+
 
   console.log(movies);
 
@@ -40,7 +43,7 @@ export const MoviesList = ({movies}) => {
                 />
 
               <MovieBox>
-                <MovieLink to={`/movies/${id}`}>
+                <MovieLink to={`/movies/${id}`} state={{from: location} }>
                   {original_title}
                 </MovieLink>
               </MovieBox>
