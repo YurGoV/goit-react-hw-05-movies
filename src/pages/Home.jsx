@@ -1,5 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+// import {Suspense} from "react";
+
 
 import {Api} from "../services/fetchApi";
 // import {Movies} from "./Movies";
@@ -9,7 +11,7 @@ import {useEffect, useState} from "react";
 
 //todo: NavLink
 
-export const HomeMui = () => {
+const HomeMui = () => {
 
    const [movies, setMovies] = useState([])
 
@@ -21,6 +23,7 @@ export const HomeMui = () => {
 
 
   return (
+    // <Suspense fallback={<div>Loading...</div>}>
     <Box component='main'
          sx={{
            display: 'flex',
@@ -37,8 +40,11 @@ export const HomeMui = () => {
       </Box>
 
     </Box>
+    // </Suspense>
   )
 }
+
+export default HomeMui;
 
 
 

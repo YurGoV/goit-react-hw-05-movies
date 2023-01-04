@@ -22,7 +22,7 @@ const Item = styled(Paper)(({theme}) => ({
 }));
 
 
-export const Cast = () => {
+const Cast = () => {
   const{ movieId } = useParams();
 
   console.log(useParams());
@@ -83,3 +83,4 @@ export const Cast = () => {
   );
 }
 
+export default Cast;

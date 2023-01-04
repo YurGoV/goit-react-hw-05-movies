@@ -5,28 +5,36 @@ import {useEffect, useState} from "react";
 import {Api} from "../services/fetchApi";
 import {LinkStyled} from "./MovieDetail.styled";
 import {Button} from "@mui/material";
+import {Suspense} from "react";
 
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
+  const [movieDetails, setMovieDetails] = useState(0)
+// const [goBack, setGoBack] = useState(null)
+
   const {movieId} = useParams();
   console.log(useParams());
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
+  console.log(backLinkHref);
 
   console.log(location.state);
 
-
-
-  const [movieDetails, setMovieDetails] = useState(0)
+// useEffect(() => )
 
   useEffect(() => {
     Api.getMovieDetails(movieId).then(setMovieDetails)
+    // if (!goBack) {
+    //   setGoBack(backLinkHref)
+    // }
   }, [movieId])
+// }, [movieId, goBack, backLinkHref])
 
-  if (!movieDetails) {
+
+
+if (!movieDetails) {
     return
   }
-
 
 
   return (
@@ -38,8 +46,9 @@ export const MovieDetails = () => {
          }}
     >
 
+      {/*<LinkStyled to={goBack}>*/}
       <LinkStyled to={backLinkHref}>
-        <Button variant='outlined'>Go Back</Button>
+      <Button variant='outlined'>Go Back</Button>
       </LinkStyled>
       <Box sx={{
         display: 'flex',
@@ -64,7 +73,7 @@ export const MovieDetails = () => {
             User Score: {movieDetails.vote_average}
           </Typography>
           <Typography gutterBottom variant="body1" component="div">
-            Genres: {movieDetails.genres.map((genre) => (`${genre.name} `) )}
+            Genres: {movieDetails.genres.map((genre) => (`${genre.name} `))}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
@@ -80,15 +89,18 @@ export const MovieDetails = () => {
         justifyContent: 'space-around',
         padding: '5px',
       }}>
-        <LinkStyled to="cast">
+        <LinkStyled to="cast" state={{ from: location.state.from }}>
           <Button variant='outlined'>CAST</Button>
         </LinkStyled>
-        <LinkStyled to="reviews">
+        <LinkStyled to="reviews" state={{ from: location.state.from }}>
           <Button variant='outlined'>REVIEWS</Button>
         </LinkStyled>
       </Box>
-      <Outlet/>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet/>
+      </Suspense>
     </Box>
   )
 }
 
+export default MovieDetails;
