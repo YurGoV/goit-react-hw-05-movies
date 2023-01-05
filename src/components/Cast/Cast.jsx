@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import {experimentalStyled as styled} from '@mui/material/styles';
 import {CastBox} from "./Cast.styled";
 
-import genericAvatar from '../../img/fakeAvatar.png'
+import genericAvatar from '../../img/fakeAvatar2.png'
 
 
 const Item = styled(Paper)(({theme}) => ({
