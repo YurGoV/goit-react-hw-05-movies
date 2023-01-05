@@ -1,6 +1,6 @@
 import {Routes, Route} from "react-router-dom";
 import {ContainerMui} from "./main/Container";
-import {MuiAppBar} from "./Header/Header";
+import {Header} from "./Header/Header";
 import {lazy, Suspense} from "react";
 // import {ToastContainer, Zoom} from "react-toastify";
 
@@ -16,7 +16,7 @@ export const App = () => {
 
   return (
     <ContainerMui>
-      <MuiAppBar/>
+      <Header/>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path='/' element={<HomeMui/>}/>
@@ -27,7 +27,6 @@ export const App = () => {
           </Route>
         </Routes>
       </Suspense>
-
 
     </ContainerMui>
   );

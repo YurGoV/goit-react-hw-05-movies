@@ -1,4 +1,5 @@
 import Container from '@mui/material/Container';
+import PropTypes from "prop-types";
 
 
 export const ContainerMui = (props) => {
@@ -11,4 +12,8 @@ export const ContainerMui = (props) => {
   >
     {props.children}
   </Container>
+}
+
+Container.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element),
 }
