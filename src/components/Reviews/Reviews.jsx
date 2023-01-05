@@ -14,7 +14,7 @@ const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState('')
 
   useEffect(() => {
-    Api.getMovieReviews(movieId).then(setMovieReviews)
+    Api.getMovieReviews(movieId).then(setMovieReviews)//todo: ?fetch error
   }, [movieId])
 
   if (!movieReviews) {

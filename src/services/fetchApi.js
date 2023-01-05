@@ -12,7 +12,7 @@ export const Api = {
       return answer;
     } catch (error) {
       // console.log(error.message);
-      return error.message;
+      return error;
     }
   },
 
@@ -23,8 +23,8 @@ export const Api = {
 
       return answer;
     } catch (error) {
-      console.log(error.message);
-      return error.message;
+      // console.log(error);
+      return error;
     }
   },
 
@@ -35,8 +35,8 @@ export const Api = {
 
       return answer;
     } catch (error) {
-      console.log(error.message);
-      return error.message;
+      // console.log(error);
+      return error;
     }
   },
 
@@ -44,11 +44,10 @@ export const Api = {
     try {
       const response = await axios.get(`${BACKEND}movie/${movieId}/credits?api_key=${API_KEY}`);
       const answer = await response.data.cast;
-
       return answer;
     } catch (error) {
-      console.log(error.message);
-      return error.message;
+      // console.log(error);
+      return error;
     }
   },
 
@@ -61,8 +60,8 @@ export const Api = {
 
       return answer;
     } catch (error) {
-      console.log(error.message);
-      return error.message;
+      // console.log(error);
+      return error;
     }
   },
 

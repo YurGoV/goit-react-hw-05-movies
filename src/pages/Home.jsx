@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import {Api} from "../services/fetchApi";
 import {MoviesList} from "../components/MoviesList/MoviesList";
 import {Main} from "../components/main/Main";
+import {toast} from "react-toastify";
 
 
 const HomeMui = () => {
@@ -11,9 +12,14 @@ const HomeMui = () => {
    const [movies, setMovies] = useState([])
 
   useEffect(() => {
-    Api.findPopular().then(r => {
-      setMovies(r);
-    })
+    Api.findPopular()
+      .then((response) => {
+        if (response.name === 'AxiosError' || !response) {//todo: refactoring
+          return toast('Sorry, something is wrong  `:( ')
+        } else {
+          setMovies(response)
+        }
+      })
   }, [])
 
 

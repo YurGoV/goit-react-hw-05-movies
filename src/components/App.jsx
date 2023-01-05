@@ -2,7 +2,9 @@ import {Routes, Route} from "react-router-dom";
 import {ContainerMui} from "./main/Container";
 import {Header} from "./Header/Header";
 import {lazy, Suspense} from "react";
-// import {ToastContainer, Zoom} from "react-toastify";
+import {ToastContainer, Zoom} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const Movies = lazy(() => import('../pages/Movies'));
@@ -28,6 +30,12 @@ export const App = () => {
         </Routes>
       </Suspense>
 
+      <ToastContainer
+      autoClose={2000}
+      position="top-center"
+      theme="light"
+      transition={Zoom}
+    />
     </ContainerMui>
   );
 };
