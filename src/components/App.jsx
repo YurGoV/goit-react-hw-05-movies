@@ -17,8 +17,10 @@ const Cast = lazy(() => import('./Cast/Cast'));
 export const App = () => {
 
   return (
-    <ContainerMui>
+    // <ContainerMui>
+    <>
       <Header/>
+      <ContainerMui>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path='/' element={<HomeMui/>}/>
@@ -29,6 +31,7 @@ export const App = () => {
           </Route>
         </Routes>
       </Suspense>
+      </ContainerMui>
 
       <ToastContainer
       autoClose={2000}
@@ -36,7 +39,8 @@ export const App = () => {
       theme="light"
       transition={Zoom}
     />
-    </ContainerMui>
+    {/*</ContainerMui>*/}
+    </>
   );
 };
 
