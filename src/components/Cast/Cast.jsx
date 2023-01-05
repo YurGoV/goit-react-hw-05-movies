@@ -13,7 +13,7 @@ const Cast = () => {
   const [movieCast, setMovieCast] = useState('')
 
   useEffect(() => {
-    Api.getMovieCast(movieId).then(setMovieCast)
+    Api.getMovieCast(movieId).then(setMovieCast)//todo: ?fetch error
   }, [movieId])
 
   if (!movieCast) {

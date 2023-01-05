@@ -23,7 +23,7 @@ export const Api = {
 
       return answer;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return error;
     }
   },
@@ -35,7 +35,7 @@ export const Api = {
 
       return answer;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return error;
     }
   },
@@ -46,7 +46,7 @@ export const Api = {
       const answer = await response.data.cast;
       return answer;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return error;
     }
   },
@@ -55,12 +55,12 @@ export const Api = {
     try {
       // console.log(query);
       const response = await axios.get(`${BACKEND}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`);
-      console.log(response);
+      // console.log(response);
       const answer = await response.data.results;
 
       return answer;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return error;
     }
   },

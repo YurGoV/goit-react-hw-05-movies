@@ -10,8 +10,6 @@ import {buttonStyles, formStyles} from "./movies.styled";
 import {Main} from "../components/main/Main";
 import {toast} from "react-toastify";
 
-//todo: toastie
-
 const Movies = () => {
 
   const [movies, setMovies] = useState([]);
