@@ -6,39 +6,26 @@ import {Api} from "../services/fetchApi";
 import {LinkStyled} from "./MovieDetail.styled";
 import {Button} from "@mui/material";
 import {Suspense} from "react";
-
+import genericPoster from '../img/poster.jpg'
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(0)
-// const [goBack, setGoBack] = useState(null)
 
   const {movieId} = useParams();
-  console.log(useParams());
+  // console.log(useParams());
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
-  // const backLinkHrefSecond = backLinkHref !== "/" ? {from: location.state.from} : "/";
-  // console.log(backLinkHrefSecond);
 
-  console.log(backLinkHref);
-
-  console.log(location.state);
-
-// useEffect(() => )
+  // console.log(backLinkHref);
+  // console.log(location.state);
 
   useEffect(() => {
     Api.getMovieDetails(movieId).then(setMovieDetails)
-    // if (!goBack) {
-    //   setGoBack(backLinkHref)
-    // }
   }, [movieId])
-// }, [movieId, goBack, backLinkHref])
-
-
 
 if (!movieDetails) {
     return
   }
-
 
   return (
     <Box component='main'
@@ -49,7 +36,6 @@ if (!movieDetails) {
          }}
     >
 
-      {/*<LinkStyled to={goBack}>*/}
       <LinkStyled to={backLinkHref}>
       <Button variant='outlined'>Go Back</Button>
       </LinkStyled>
@@ -63,7 +49,9 @@ if (!movieDetails) {
           display: 'flex',
           minWidth: 340,
         }}>
-          <img alt='poster' src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}/>
+          <img alt='poster' src={movieDetails.poster_path
+            ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+            : genericPoster}/>
         </Box>
         <Box sx={{
           padding: '0 50px',

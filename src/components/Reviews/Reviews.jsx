@@ -4,11 +4,12 @@ import Typography from '@mui/material/Typography';
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Api} from "../../services/fetchApi";
+import Divider from '@mui/material/Divider';
+
 
 const Reviews = () => {
   const{ movieId } = useParams();
-
-  console.log(useParams());
+  // console.log(useParams());
 
   const [movieReviews, setMovieReviews] = useState('')
 
@@ -22,7 +23,7 @@ const Reviews = () => {
 
   if (movieReviews.length === 0) {
     return (
-      <Typography>
+      <Typography component='h1'>
         THERE ARE NO REVIEWS FOR THIS FILM
       </Typography>
     )
@@ -32,9 +33,13 @@ const Reviews = () => {
     <Box>
       {movieReviews.map(({id, author, content}) => (
         <div key={id}>
-          <Typography> Author: {author} </Typography>
+          <Typography variant='h6'> Author: {author} </Typography>
           <Typography> {content} </Typography>
-
+          <Divider sx={{
+            marginBottom: '10px',
+            marginTop: '5px',
+            // maxWidth: '40%',
+          }} />
         </div>
       ))}
     </Box>
