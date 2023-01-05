@@ -15,5 +15,5 @@ export const ContainerMui = (props) => {
 }
 
 Container.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.object,
 }
