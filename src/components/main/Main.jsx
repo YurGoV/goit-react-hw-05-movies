@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import PropTypes from "prop-types";
 
 
 export const Main = (props) => {
@@ -14,4 +15,8 @@ export const Main = (props) => {
       {props.children}
     </Box>
   )
+}
+
+Main.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element),
 }

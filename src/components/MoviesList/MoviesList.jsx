@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import {Item, MovieBox, NavLinkStyled} from "./MoviesList.styled";
 import genericFilmPic from '../../img/film.jpg'
+import PropTypes, {arrayOf} from "prop-types";
+
 
 
 
@@ -41,7 +43,13 @@ export const MoviesList = ({movies}) => {
     </Box>
   )
 
+};
+
+MoviesList.propTypes = {
+  movies: arrayOf(PropTypes.object),
 }
+
+
 /*
 This should be used: https://image.tmdb.org/t/p/ {SIZE}
   Examples:

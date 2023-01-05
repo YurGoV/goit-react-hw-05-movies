@@ -9,7 +9,7 @@ import {MoviesList} from "../components/MoviesList/MoviesList";
 import {buttonStyles, formStyles} from "./movies.styled";
 import {Main} from "../components/main/Main";
 
-//todo: toastify
+//todo: toastie
 
 const Movies = () => {
 
