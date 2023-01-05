@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {NavLink} from "react-router-dom";
 
 
-export const StyledNavLink = styled(NavLink)`
+export const NavLinkStyled = styled(NavLink)`
   display: flex;
   color: white;
   padding: 2px 15px;
@@ -19,8 +19,11 @@ export const StyledNavLink = styled(NavLink)`
 
   :hover:not(.active),
   :focus-visible:not(.active) {
-    //color: darkcyan;
-    //border-color: gray;
     border: 1px dotted white;
+`;
 
-`
+export const AppBarStyles = {
+  display: 'flex',
+  flexDirection: 'row',
+  padding: '10px',
+}

@@ -8,21 +8,17 @@ export const Api = {
   async findPopular() {
     try {
       const response = await axios.get(`${BACKEND}trending/movie/day?api_key=${API_KEY}`);
-      console.log(response);
       const answer = await response.data.results;
-
       return answer;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       return error.message;
     }
   },
 
   async getMovieDetails(movieId) {
     try {
-      console.log(movieId);
       const response = await axios.get(`${BACKEND}movie/${movieId}?api_key=${API_KEY}`);
-      console.log(response.data);
       const answer = await response.data;
 
       return answer;
@@ -34,9 +30,7 @@ export const Api = {
 
   async getMovieReviews(movieId) {
     try {
-      console.log(movieId);
       const response = await axios.get(`${BACKEND}movie/${movieId}/reviews?api_key=${API_KEY}`);
-      console.log(response.data.results);
       const answer = await response.data.results;
 
       return answer;
@@ -48,9 +42,7 @@ export const Api = {
 
   async getMovieCast(movieId) {
     try {
-      console.log(movieId);
       const response = await axios.get(`${BACKEND}movie/${movieId}/credits?api_key=${API_KEY}`);
-      console.log(response.data.cast);
       const answer = await response.data.cast;
 
       return answer;
@@ -62,9 +54,9 @@ export const Api = {
 
   async findOnQuery(query, page = 1) {
     try {
-      console.log(query);
+      // console.log(query);
       const response = await axios.get(`${BACKEND}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`);
-      console.log(response);
+      // console.log(response);
       const answer = await response.data.results;
 
       return answer;
@@ -75,6 +67,49 @@ export const Api = {
   },
 
 };
+
+
+//todo: refactor
+/*
+
+export const Api = async (type = null, query = null, page = 1) => {
+
+  if (type === 'query') {
+    const get = `${BACKEND}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
+  }
+
+  if (type === 'popular') {
+    const get = `${BACKEND}trending/movie/day?api_key=${API_KEY}`;
+  }
+
+  if (type === 'details') {
+    const get = `${BACKEND}movie/${movieId}?api_key=${API_KEY}`;
+  }
+
+  if (type === 'reviews') {
+    const get = `${BACKEND}movie/${movieId}/reviews?api_key=${API_KEY}`;
+  }
+  if (type === 'cast') {
+    const get = `${BACKEND}movie/${movieId}/credits?api_key=${API_KEY}`;
+  }
+
+
+
+
+  try {
+    console.log(query);
+    const response = await axios.get(get);
+    console.log(response);
+    return await response.data;
+
+  } catch (error) {
+    console.log(error.message);
+    return error.message;
+  }
+
+};
+*/
+
 
 
 

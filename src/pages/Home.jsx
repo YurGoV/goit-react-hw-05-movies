@@ -1,15 +1,10 @@
+import {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-// import {Suspense} from "react";
-
-
 import {Api} from "../services/fetchApi";
-// import {Movies} from "./Movies";
 import {MoviesList} from "../components/MoviesList/MoviesList";
-import {useEffect, useState} from "react";
+import {Main} from "../components/main/Main";
 
-
-//todo: NavLink
 
 const HomeMui = () => {
 
@@ -23,14 +18,7 @@ const HomeMui = () => {
 
 
   return (
-    // <Suspense fallback={<div>Loading...</div>}>
-    <Box component='main'
-         sx={{
-           display: 'flex',
-           flexDirection: 'column',
-           padding: '10px',
-         }}
-    >
+    <Main>
       <Typography component='h1' fontSize='24px'>
         Trending today
       </Typography>
@@ -39,8 +27,7 @@ const HomeMui = () => {
         <MoviesList movies={movies} />
       </Box>
 
-    </Box>
-    // </Suspense>
+    </Main>
   )
 }
 
