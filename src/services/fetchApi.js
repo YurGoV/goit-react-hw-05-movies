@@ -68,47 +68,5 @@ export const Api = {
 };
 
 
-//todo: refactor
-/*
-
-export const Api = async (type = null, query = null, page = 1) => {
-
-  if (type === 'query') {
-    const get = `${BACKEND}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
-  }
-
-  if (type === 'popular') {
-    const get = `${BACKEND}trending/movie/day?api_key=${API_KEY}`;
-  }
-
-  if (type === 'details') {
-    const get = `${BACKEND}movie/${movieId}?api_key=${API_KEY}`;
-  }
-
-  if (type === 'reviews') {
-    const get = `${BACKEND}movie/${movieId}/reviews?api_key=${API_KEY}`;
-  }
-  if (type === 'cast') {
-    const get = `${BACKEND}movie/${movieId}/credits?api_key=${API_KEY}`;
-  }
-
-
-
-
-  try {
-    console.log(query);
-    const response = await axios.get(get);
-    console.log(response);
-    return await response.data;
-
-  } catch (error) {
-    console.log(error.message);
-    return error.message;
-  }
-
-};
-*/
-
-
 
 
