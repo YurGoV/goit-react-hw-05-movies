@@ -1,20 +1,23 @@
-import {useEffect, useState} from "react";
+// import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import {Api} from "../../services/fetchApi";
+// import {Api} from "../../services/fetchApi";
 import Grid from "@mui/material/Unstable_Grid2";
 import {Avatar} from "@mui/material";
 import {CastItem, CastText} from "./Cast.styled";
 import genericAvatar from '../../img/fakeAvatar2.png'
+import {useFetchApi} from "../../services/useFetchApi";
 
 const Cast = () => {
   const {movieId} = useParams();
-  const [movieCast, setMovieCast] = useState('')
+  // const [movieCast, setMovieCast] = useState('')
 
-  useEffect(() => {
-    Api.getMovieCast(movieId).then(setMovieCast)//todo: ?fetch error
-  }, [movieId])
+  // useEffect(() => {
+  //   Api.getMovieCast(movieId).then(setMovieCast)//todo: ?fetch error
+  // }, [movieId])
+
+  const {movieCast} = useFetchApi(movieId, 'cast');
 
   if (!movieCast) {
     return null
