@@ -1,29 +1,43 @@
 import Typography from "@mui/material/Typography";
 import Box from '@mui/material/Box';
 import {Outlet, useLocation, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {Api} from "../services/fetchApi";
+import {useEffect} from "react";
+// import {useEffect, useState} from "react";
+// import {Api} from "../services/fetchApi";
 import {LinkStyled} from "./MovieDetail.styled";
 import {Button} from "@mui/material";
 import {Suspense} from "react";
+import {useFetchApi} from "../services/useFetchApi";/////
 import genericPoster from '../img/poster.jpg'
 
 const MovieDetails = () => {
-  const [movieDetails, setMovieDetails] = useState(0)
+  // const [movieDetails, setMovieDetails] = useState(0)//BACKUP
 
   const {movieId} = useParams();
   // console.log(useParams());
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
-
   // console.log(backLinkHref);
   // console.log(location.state);
 
-  useEffect(() => {
-    Api.getMovieDetails(movieId).then(setMovieDetails)
-  }, [movieId])
 
-if (!movieDetails) {
+  // // BACKUP
+  // useEffect(() => {
+  //   Api.getMovieDetails(movieId).then(setMovieDetails)
+  // }, [movieId])
+
+  const {movieDetails, fetchPopular} = useFetchApi();
+
+  useEffect(() => {//todo: without useEffect??
+    fetchPopular({movieId}, null,  'details');
+  }, [movieId, fetchPopular])
+
+
+
+
+
+
+  if (!movieDetails) {
     return
   }
 
