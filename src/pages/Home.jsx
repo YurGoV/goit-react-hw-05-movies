@@ -1,27 +1,32 @@
-import {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import {Api} from "../services/fetchApi";
 import {MoviesList} from "../components/MoviesList/MoviesList";
 import {Main} from "../components/main/Main";
-import {toast} from "react-toastify";
+import {useFetchApi} from "../services/useFetchApi";
+// import {useEffect, useState} from "react";
+// import {Api} from "../services/fetchApi";
+// import {toast} from "react-toastify";
+
+
+
 
 
 const HomeMui = () => {
+  // // BACKUP:
+  //  const [movies, setMovies] = useState([])
+  //
+  // useEffect(() => {
+  //   Api.findPopular()
+  //     .then((response) => {
+  //       if (response.name === 'AxiosError' || !response) {//todo: refactoring in useFetchApi
+  //         return toast('Sorry, something is wrong  `:( ')
+  //       } else {
+  //         setMovies(response)
+  //       }
+  //     })
+  // }, [])
 
-   const [movies, setMovies] = useState([])
-
-  useEffect(() => {
-    Api.findPopular()
-      .then((response) => {
-        if (response.name === 'AxiosError' || !response) {//todo: refactoring
-          return toast('Sorry, something is wrong  `:( ')
-        } else {
-          setMovies(response)
-        }
-      })
-  }, [])
-
+  const {movies} = useFetchApi();//todo: toastie in useFetchApi
 
   return (
     <Main>
