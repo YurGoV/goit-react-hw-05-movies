@@ -2,20 +2,24 @@ import Box from '@mui/material/Box';
 
 import Typography from '@mui/material/Typography';
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {Api} from "../../services/fetchApi";
+// import {useEffect, useState} from "react";
+// import {Api} from "../../services/fetchApi";
 import Divider from '@mui/material/Divider';
+
+import {useFetchApi} from "../../services/useFetchApi";/////
 
 
 const Reviews = () => {
   const{ movieId } = useParams();
   // console.log(useParams());
 
-  const [movieReviews, setMovieReviews] = useState('')
+  // const [movieReviews, setMovieReviews] = useState('')////
 
-  useEffect(() => {
-    Api.getMovieReviews(movieId).then(setMovieReviews)//todo: ?fetch error
-  }, [movieId])
+  // useEffect(() => {
+  //   Api.getMovieReviews(movieId).then(setMovieReviews)//todo: ?fetch error
+  // }, [movieId])
+
+  const {movieReviews} = useFetchApi(movieId, 'reviews')
 
   if (!movieReviews) {
     return null
