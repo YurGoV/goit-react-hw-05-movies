@@ -9,7 +9,6 @@ export const Main = (props) => {
            display: 'flex',
            flexDirection: 'column',
            padding: '10px',
-           // border: '1px solid red',
          }}
     >
       {props.children}

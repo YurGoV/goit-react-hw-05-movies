@@ -7,10 +7,6 @@ import genericFilmPic from '../../img/film.jpg'
 import PropTypes, {arrayOf} from "prop-types";
 
 
-
-
-
-
 export const MoviesList = ({movies}) => {
   const location = useLocation();
 
@@ -19,30 +15,28 @@ export const MoviesList = ({movies}) => {
       <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 4, sm: 8, md: 12}}>
 
         {movies.map(({id, original_title, backdrop_path}) => (
-
           <Grid xs={2} sm={4} md={4} key={id}>
-            <Item >
+            <Item>
 
-              <Avatar sx={{ width: 88, height: 50 }}
-                alt="film picture"
-                src={backdrop_path ? `https://image.tmdb.org/t/p/w154/${backdrop_path}` : genericFilmPic}
-                variant="rounded"
-                />
+              <Avatar sx={{width: 88, height: 50}}
+                      alt="film picture"
+                      src={backdrop_path ? `https://image.tmdb.org/t/p/w154/${backdrop_path}` : genericFilmPic}
+                      variant="rounded"
+              />
 
               <MovieBox>
-                <NavLinkStyled to={`/movies/${id}`} state={{from: location} }>
+                <NavLinkStyled to={`/movies/${id}`} state={{from: location}}>
                   {original_title}
                 </NavLinkStyled>
               </MovieBox>
 
             </Item>
-
           </Grid>
         ))}
+
       </Grid>
     </Box>
   )
-
 };
 
 MoviesList.propTypes = {

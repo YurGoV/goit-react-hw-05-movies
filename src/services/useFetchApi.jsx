@@ -1,11 +1,15 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 const API_KEY = 'fe13ab826a741d40ca015441d0a0f529';
 const BACKEND = 'https://api.themoviedb.org/3/';
 
+//todo: refactoring
+//todo: fetch error
+//todo: toastie
 
-const fetchPopular = (setResult, query = null, page = 1, type = 'popular') => {
+const fetchPopular = (setResult) => {
   try {
     axios(`${BACKEND}trending/movie/day?api_key=${API_KEY}`)
       .then((response) => {
@@ -53,7 +57,6 @@ const fetchMovieReviews = (setResult, movieId) => {
 };
 
 const fetchOnQuery = (setResult, query, page = 1) => {
-  console.log('fetchFuncStarted');
   const searchString = query.trim()
   try {
     if (!searchString || searchString === '') {
@@ -61,7 +64,11 @@ const fetchOnQuery = (setResult, query, page = 1) => {
     }
     axios(`${BACKEND}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`)
       .then((response) => {
-        return setResult(response.data.results)
+        const answer = response.data.results;
+        if (answer.length === 0) {
+          return toast('There no movies matched you request, try again please )')
+        }
+        return setResult(answer)
       });
   } catch (error) {
     return error;
@@ -76,37 +83,30 @@ export const useFetchApi = (query = '', type = 'popular', page = 1) => {
   const [movieCast, setMovieCast] = useState('');
 
   useEffect(() => {
-    try {
+    try {//todo: refactoring to ternary
       if (type === 'popular') {
         fetchPopular(setMovies)
       }
       if (type === 'details' && query) {//todo: if (query.movieId)
-        console.log('ifDetails, ', query);
         fetchMovieDetails(setMovieDetails, query)
       }
       if (type === 'reviews' && query) {//todo: if (query.movieId)
-        console.log('ifReviews, ', query);
         fetchMovieReviews(setMovieReviews, query)
       }
       if (type === 'cast' && query) {//todo: if (query.movieId)
-        console.log('ifCast, ', query);
         fetchMovieCast(setMovieCast, query);
       }
       if (type === 'query' && query === '') {
-        console.log('emptyQ');
+        // console.log('emptyQ');
         return
       }
       if (type === 'query') {//todo: if (query.movieId)
-
         fetchOnQuery(setMovies, query)
       }
-
-
     } catch (error) {
       // console.log(error.message);
       return error;
     }
-
   }, [query, type]);
 
   return {movies, movieDetails, movieReviews, movieCast}

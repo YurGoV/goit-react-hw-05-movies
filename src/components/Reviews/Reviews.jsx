@@ -1,24 +1,12 @@
 import Box from '@mui/material/Box';
-
-import Typography from '@mui/material/Typography';
 import {useParams} from "react-router-dom";
-// import {useEffect, useState} from "react";
-// import {Api} from "../../services/fetchApi";
 import Divider from '@mui/material/Divider';
-
-import {useFetchApi} from "../../services/useFetchApi";/////
+import Typography from '@mui/material/Typography';
+import {useFetchApi} from "../../services/useFetchApi";
 
 
 const Reviews = () => {
-  const{ movieId } = useParams();
-  // console.log(useParams());
-
-  // const [movieReviews, setMovieReviews] = useState('')////
-
-  // useEffect(() => {
-  //   Api.getMovieReviews(movieId).then(setMovieReviews)//todo: ?fetch error
-  // }, [movieId])
-
+  const {movieId} = useParams();
   const {movieReviews} = useFetchApi(movieId, 'reviews')
 
   if (!movieReviews) {
@@ -39,15 +27,11 @@ const Reviews = () => {
         <div key={id}>
           <Typography variant='h6'> Author: {author} </Typography>
           <Typography> {content} </Typography>
-          <Divider sx={{
-            marginBottom: '10px',
-            marginTop: '5px',
-            // maxWidth: '40%',
-          }} />
+          <Divider sx={{marginBottom: '10px', marginTop: '5px',}}/>
         </div>
       ))}
     </Box>
   );
-}
+};
 
 export default Reviews;
