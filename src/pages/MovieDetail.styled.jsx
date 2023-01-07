@@ -20,3 +20,28 @@ export const LinkStyled = styled(NavLink)`
     //border: 1px dotted white;
 
 `;
+
+export const boxMainStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '0 20%',
+};
+
+export const boxMainCardStyles = {
+  display: 'flex',
+  flexDirection: 'row',
+  minWidth: '340px',
+  marginBottom: 'auto',
+};
+
+export const boxImgStyles = {
+  display: 'flex',
+  minWidth: 340,
+};
+
+export const boxLinksStyles = {
+  display: 'flex',
+  maxWidth: 340,
+  justifyContent: 'space-around',
+  padding: '5px',
+};
