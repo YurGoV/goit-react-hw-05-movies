@@ -17,7 +17,8 @@ const fetchPopular = (setResult) => {
         return setResult(response.data.results)
       });
   } catch (error) {
-    return error;
+    console.log(error);
+    // return error;
   }
 };
 
@@ -28,8 +29,8 @@ const fetchMovieDetails = (setResult, movieId) => {
               return setResult(response.data)
             });
   } catch (error) {
-    // console.log(error.message);
-    return error;
+    console.log(error);
+    // return error;
   }
 };
 
@@ -40,8 +41,8 @@ const fetchMovieCast = (setResult, movieId) => {
         return setResult(response.data.cast)
       });
   } catch (error) {
-    // console.log(error.message);
-    return error;
+    console.log(error);
+    // return error;
   }
 };
 
@@ -52,8 +53,8 @@ const fetchMovieReviews = (setResult, movieId) => {
         return setResult(response.data.results)
       });
   } catch (error) {
-    // console.log(error.message);
-    return error;
+    console.log(error);
+    // return error;
   }
 };
 
@@ -65,10 +66,7 @@ const fetchOnQuery = (setResult, query, page = 1) => {
     }
     axios(`${BACKEND}search/movie?api_key=${API_KEY}&query=${query}&page=${page}`)
       .then((response) => {
-        // console.log(response);
-        // if (response.name === 'AxiosError') {
-        //   return toast('Sorry, something is wrong  `:( ')
-        // }
+        console.log(response);
         const answer = response.data.results;
         if (answer.length === 0) {
           return toast('There no movies matched you request, try again please )')
@@ -76,8 +74,7 @@ const fetchOnQuery = (setResult, query, page = 1) => {
         return setResult(answer)
       });
   } catch (error) {
-    // console.log(error);
-    return error;
+    console.log(error);
   }
 };
 
